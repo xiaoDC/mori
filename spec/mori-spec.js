@@ -186,6 +186,18 @@ describe("Mori Extra", function() {
             expect(bigFib).toEqual(Infinity);
         });
     });
-
+  describe('channels', function() {
+    it('create channel with size',function(done) {
+      var a = mori.async;
+      var c = a.chan(1)
+      a.take$(c ,function(x){
+        expect(x).toBe('something in channel')
+        done()
+      })
+      a.put$(c, 'something in channel',function() {
+        
+      })
+    })
+  })
 })
 

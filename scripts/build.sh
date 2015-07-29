@@ -11,6 +11,7 @@ echo "Finalizing mori.js"
  cat ./release/build/mori.base.js;
  cat ./release/build/mori.extra.js;
  cat ./release/build/mori.mutable.js;
+ cat ./release/build/mori.async.js;
  cat support/wrapper.end.txt) > mori.js
 
 echo "Build finished."
