@@ -1,5 +1,6 @@
 var mori = require("../mori"),
-    extra = mori.extra;
+    extra = mori.extra,
+    async = mori.async;
 describe("Map", function () {
     it("demonstrates mapping a function over a vector", function () {
         var inc = function (n) { return n + 1; },
@@ -186,17 +187,59 @@ describe("Mori Extra", function() {
             expect(bigFib).toEqual(Infinity);
         });
     });
-  describe('channels', function() {
-    it('create channel with size',function(done) {
-      var a = mori.async;
-      var c = a.chan(1)
-      a.take$(c ,function(x){
+})
+
+describe('core.async', function() {
+  describe('channel', function() {
+    it('take and put from channel',function(done) {
+      var c = async.chan()
+      async.take$(c ,function(x){
         expect(x).toBe('something in channel')
         done()
       })
-      a.put$(c, 'something in channel',function() {
-        
+      async.put$(c, 'something in channel')
+    })
+
+    it('close channel for put', function() {
+      var c = async.chan()
+      async.close$(c)
+      expect(async.put$(c, 'something in channel')).toBe(false)
+    })
+    it('can create timeout channel', function(done) {
+      var now = new Date();
+      var tc = async.timeout(200)
+      async.take$(tc, function(x) {
+        var then = new Date();
+        expect(((then-now)/100).toFixed()).toBe("2")
+        done()
       })
+    })
+  })
+
+  describe('alts', function() {
+    it('race channel', function(done) {
+      var c1 = async.chan()
+      var c2 = async.chan()
+      
+      async.doAlts(function(v) {
+        expect(mori.get(v, 0)).toBe('c1')
+        expect(mori.equals(c1, v.a(1))).toBe(true)
+        done()
+      },[c1,c2])
+      async.put$(c1, 'c1')
+      async.put$(c2, 'c2')
+    })
+
+    it('race channel untile timeout', function(done) {
+      var c1 = async.timeout(100)
+      var c2 = async.chan()
+      var now = new Date()
+      async.doAlts(function(v) {
+        var then = new Date()
+        expect((then-now)>100 && (then-now)<150).toBe(true)
+        done()
+      },[c1,c2])
+      // async.put$(c1, 'c1')
     })
   })
 })
