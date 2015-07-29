@@ -102,6 +102,20 @@ _.intoArray(_.interpose("foo", _.vector(1, 2, 3, 4)));
 // => [1, "foo", 2, "foo", 3, "foo", 4]
 ```
 
+core.async
+```js
+var c1 = async.chan()
+var c2 = async.chan()
+
+async.doAlts(function(v) {
+  expect(mori.get(v, 0)).toBe('c1')
+  expect(mori.equals(c1, v.a(1))).toBe(true)
+  done()
+},[c1,c2])
+async.put$(c1, 'c1')
+async.put$(c2, 'c2')
+```
+
 Or if it's more your speed, use it from CoffeeScript!
 
 ```coffeescript
