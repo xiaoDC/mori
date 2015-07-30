@@ -1,8 +1,8 @@
 {
-  "name": "mori",
-  "version": "0.3.2",
-  "description": "Persistent Data Structures for JavaScript",
-  "homepage": "https://github.com/swannodette/mori",
+  "name": "con.js",
+  "version": "0.4.0",
+  "description": "Fork of Mori, a Persistent Data Structures for JavaScript",
+  "homepage": "https://github.com/jcouyang/conjs",
   "author": "David Nolen (https://github.com/swannodette)",
   "keywords": [
     "data",
@@ -12,10 +12,14 @@
     "clojurescript",
     "map",
     "filter",
-    "reduce"
+    "reduce",
+    "core.async",
+    "csp",
+    "transducer"
   ],
   "contributors": [
-    "David Nolen (https://github.com/swannodette)"
+    "David Nolen (https://github.com/swannodette)",
+    "Jichao Ouyang"
   ],
   "bugs": {
     "url": "https://github.com/swannodette/mori/issues"
@@ -29,7 +33,7 @@
   "main": "./mori.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/swannodette/mori.git"
+    "url": "git://github.com/jcouyang/conjs.git"
   },
   "engines": {
       "node": ">=0.8.22"
