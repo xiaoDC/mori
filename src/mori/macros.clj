@@ -1,5 +1,6 @@
 (ns mori.macros
   (:require [cljs.compiler :as comp]
+            [cljs.core :as clj]
             [cljs.analyzer :as ana]
             [cljs.util :as util]
             [cljs.analyzer.api :as ana-api]))
@@ -30,6 +31,13 @@
          ~@(when (and arglists (< 1 (count arglists)))
              (map export-method (remove #(some '#{&} %) arglists)))))))
 
+
+
+(defmacro property-export [exportp corep]
+  `(js/goog.exportSymbol
+    ~(str "mori." exportp)
+    (fn [& args#] (apply ~corep (cons (~'js* "this") args#)))))
+  
 (comment
 
   ;; setup
