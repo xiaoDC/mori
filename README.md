@@ -1,10 +1,46 @@
-# mori
+# conjs, a fork of mori
 
 <img src="http://cloud.github.com/downloads/swannodette/mori/mori.png" alt="Mori" title="Mori"/>
 
 A simple bridge to ClojureScript's persistent data structures and
 [supporting APIs](http://swannodette.github.io/mori/) for vanilla
 JavaScript. Pull requests welcome.
+
+## Breaking Changes in Conjs 0.4.1
+
+### core.async
+
+channel ported from core.async, and aync put, get and alts, natively callback, not generator and statemachines.
+
+```js
+var c1 = async.chan()
+var c2 = async.chan()
+
+async.doAlts(function(v) {
+  expect(mori.get(v, 0)).toBe('c1')
+  expect(mori.equals(c1, v.a(1))).toBe(true)
+  done()
+},[c1,c2])
+async.put$(c1, 'c1')
+async.put$(c2, 'c2')
+```
+
+### Idiomatic JS method names
+
+instead of
+```js
+var a = mori.hashMap(1,2,3,4)
+mori.get(a, 1)
+mori.assoc(a, 1, 6)
+```
+
+there also JS method of your choice
+
+```js
+var a = mori.hashMap(1,2,3,4)
+a.get(1) // => 2
+a.assoc(1,6) // => {1 6, 3 4}
+```
 
 ## Breaking changes in 0.3.0 
 
@@ -100,20 +136,6 @@ Lazy sequences!
 var _ = mori;
 _.intoArray(_.interpose("foo", _.vector(1, 2, 3, 4)));
 // => [1, "foo", 2, "foo", 3, "foo", 4]
-```
-
-core.async
-```js
-var c1 = async.chan()
-var c2 = async.chan()
-
-async.doAlts(function(v) {
-  expect(mori.get(v, 0)).toBe('c1')
-  expect(mori.equals(c1, v.a(1))).toBe(true)
-  done()
-},[c1,c2])
-async.put$(c1, 'c1')
-async.put$(c2, 'c2')
 ```
 
 Or if it's more your speed, use it from CoffeeScript!
