@@ -8,6 +8,15 @@
 (mori-export async.toChan async/to-chan)
 (mori-export async.ontoChan async/onto-chan)
 (mori-export async.take$ async/take!)
+(defn ^:export put [chan val]
+  (goog/Promise. (fn [resolve, reject] (async/put! chan val (fn [res] (resolve res))))))
+
+(defn ^:export take [chan val]
+  (goog/Promise. (fn [resolve, reject] (async/take! chan (fn [res] (resolve res))))))
+
+(defn ^:export alts [chans]
+  (goog/Promise. (fn [resolve, reject] (async/do-alts chans (fn [res] (resolve res))))))
+
 (mori-export async.put$ async/put!)
 (mori-export async.timeout async/timeout)
 (mori-export async.promiseChan async/promise-chan)
