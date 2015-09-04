@@ -1,6 +1,6 @@
 {
   "name": "con.js",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Fork of Mori, a Persistent Data Structures for JavaScript",
   "homepage": "https://github.com/jcouyang/conjs",
   "author": "David Nolen (https://github.com/swannodette)",
