@@ -25,6 +25,38 @@ async.put$(c1, 'c1')
 async.put$(c2, 'c2')
 ```
 
+and **Promise** version of channel
+
+```js
+async.alts([c1,c2])
+  .then(function(v) {
+    expect(v.get(0)).toBe('c1')
+    expect(mori.equals(c1, v.get(1))).toBe(true)
+  })
+  .then(done)
+async.put(c1, 'c1').then(function(){console.log('put c1 into c1')})
+async.put(c2, 'c2').then(function(){console.log('put c2 into c2')})
+```
+
+it return a promise, so if you're using babel with es7 `async function` feature, then you'll get a very nice CSP style of taking, puting and atlsing a Channel.
+
+```js
+var a = mori.async;
+(async function(){
+  var v = await a.atls([c1,c2]);
+  expect(v.get(0)).toBe('c1')
+  expect(mori.equals(c1, v.get(1))).toBe(true)
+})()
+
+(async function(){
+  await a.put(c1, 'c1')
+  console.log('put c1 into c1')
+})()
+(async function(){
+  await a.put(c2, 'c2')
+  console.log('put c2 into c2')
+})()  
+```
 ### Idiomatic JS method names
 
 instead of

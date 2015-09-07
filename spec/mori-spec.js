@@ -189,3 +189,54 @@ describe("Mori Extra", function() {
     });
 })
 
+describe('Idiomatic JS method names', function() {
+    var m = mori;
+    describe('Map', function() {
+        var map = m.hashMap(1,2,3,4)
+        it('expose methods',function() {
+            expect(map.get(1)).toBe(2);
+            expect(map.conj(m.hashMap(5, 6)).toString()).toBe('{1 2, 3 4, 5 6}')
+            expect(map.empty().toString()).toBe('{}')
+            expect(map.equiv(m.hashMap(1,2,3,4))).toBe(true)
+            expect(map.count()).toBe(2)
+            expect(map.assoc(5, 6).toString()).toBe('{1 2, 3 4, 5 6}')
+            expect(map.dissoc(1).toString()).toBe('{3 4}')
+            expect(map.reduce(function(acc,x){return acc+x},'heheda')).toBe('heheda[1 2][3 4]')
+            expect(map.kvReduce(function(acc, k, v){return acc+k+v},0)).toBe(10)
+            map.asTransient()
+            expect(map.has(1)).toBe(true)
+            var sum=0;
+            map.forEach(function(x){sum+=x})
+            expect(sum).toBe(6)
+        })
+    })
+
+    describe('Vector', function() {
+        var vec = m.vector(1,2,3,4)
+        it('expose methods',function() {
+            expect(vec.get(1)).toBe(2);
+            expect(vec.conj(5,6).toString()).toBe('[1 2 3 4 5 6]')
+            expect(vec.empty().toString()).toBe('[]')
+            expect(vec.equiv(m.vector(1,2,3,4))).toBe(true)
+            expect(vec.count()).toBe(4)
+            expect(vec.assoc(3, 6).toString()).toBe('[1 2 3 6]')
+            expect(vec.reduce(function(acc,x){return acc+x},0)).toBe(10)
+            expect(vec.kvReduce(function(acc, k, v){return acc+k+v},0)).toBe(16)
+            vec.asTransient()
+        })
+    })
+
+    describe('Set', function() {
+        var set = m.set([1, 2, 3, 4, 3])
+        it('expose methods',function() {
+            expect(set.get(1)).toBe(1);
+            expect(set.conj(5, 6).toString()).toBe('#{1 2 3 4 5 6}')
+            expect(set.empty().toString()).toBe('#{}')
+            expect(set.equiv(m.set([1, 2, 3, 4]))).toBe(true)
+            expect(set.count()).toBe(4)
+            expect(set.disjoin(1).toString()).toBe('#{2 3 4}')
+            expect(set.has(1)).toBe(true)
+        })
+    })
+
+})

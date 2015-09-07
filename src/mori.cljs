@@ -32,8 +32,6 @@
 (mori-export vec cljs.core/vec)
 (mori-export Vector cljs.core/PersistentVector)
 
-
-
 (property-export "Vector.prototype.nth" cljs.core/nth)
 (property-export "Vector.prototype.peek" cljs.core/peek)
 (property-export "Vector.prototype.pop" cljs.core/pop)
@@ -53,10 +51,7 @@
 (mori-export ArrayMap cljs.core/PersistentArrayMap)
 (property-export "ArrayMap.prototype.conj" cljs.core/conj)
 (property-export "ArrayMap.prototype.empty" cljs.core/empty)
-(property-export "ArrayMap.prototype.equiv" cljs.core/==)
 (property-export "ArrayMap.prototype.count" cljs.core/count)
-(property-export "ArrayMap.prototype.key" cljs.core/key)
-(property-export "ArrayMap.prototype.val" cljs.core/val)
 (property-export "ArrayMap.prototype.assoc" cljs.core/assoc)
 (property-export "ArrayMap.prototype.dissoc" cljs.core/dissoc)
 (property-export "ArrayMap.prototype.reduce" (fn [coll f init] (cljs.core/reduce f init coll)))
@@ -65,7 +60,6 @@
 
 (goog/exportSymbol "mori.ArrayMap.prototype.get" (.. cljs.core/PersistentArrayMap -prototype -get))
 (goog/exportSymbol "mori.ArrayMap.prototype.has" (.. cljs.core/PersistentArrayMap -prototype -has))
-(goog/exportSymbol "mori.ArrayMap.prototype.toString" (.. cljs.core/PersistentArrayMap -prototype -toString))
 (goog/exportSymbol "mori.ArrayMap.prototype.equiv" (.. cljs.core/PersistentArrayMap -prototype -equiv))
 (goog/exportSymbol "mori.ArrayMap.prototype.keys" (.. cljs.core/PersistentArrayMap -prototype -keys))
 (goog/exportSymbol "mori.ArrayMap.prototype.entries" (.. cljs.core/PersistentArrayMap -prototype -entries))
@@ -95,7 +89,6 @@
 
 (goog/exportSymbol "mori.Map.prototype.get" (.. cljs.core/PersistentHashMap -prototype -get))
 (goog/exportSymbol "mori.Map.prototype.has" (.. cljs.core/PersistentHashMap -prototype -has))
-(goog/exportSymbol "mori.Map.prototype.toString" (.. cljs.core/PersistentHashMap -prototype -toString))
 (goog/exportSymbol "mori.Map.prototype.equiv" (.. cljs.core/PersistentHashMap -prototype -equiv))
 (goog/exportSymbol "mori.Map.prototype.keys" (.. cljs.core/PersistentHashMap -prototype -keys))
 (goog/exportSymbol "mori.Map.prototype.entries" (.. cljs.core/PersistentHashMap -prototype -entries))
@@ -110,13 +103,11 @@
 (property-export "Set.prototype.count" cljs.core/count)
 (property-export "Set.prototype.key" cljs.core/key)
 (property-export "Set.prototype.val" cljs.core/val)
-(property-export "Set.prototype.assoc" cljs.core/assoc)
 (property-export "Set.prototype.contains" cljs.core/contains?)
 (property-export "Set.prototype.disjoin" cljs.core/disj)
 
 
 (goog/exportSymbol "mori.Set.prototype.has" (.. cljs.core/PersistentHashSet -prototype -has))
-(goog/exportSymbol "mori.Set.prototype.toString" (.. cljs.core/PersistentHashSet -prototype -toString))
 (goog/exportSymbol "mori.Set.prototype.equiv" (.. cljs.core/PersistentHashSet -prototype -equiv))
 (goog/exportSymbol "mori.Set.prototype.keys" (.. cljs.core/PersistentHashSet -prototype -keys))
 (goog/exportSymbol "mori.Set.prototype.entries" (.. cljs.core/PersistentHashSet -prototype -entries))
