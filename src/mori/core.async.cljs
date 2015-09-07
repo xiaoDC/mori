@@ -1,21 +1,23 @@
 (ns mori.async
-  (:refer-clojure :exclude [reduce into merge map take partition partition-by])
+  (:refer-clojure :exclude [reduce split pipe into merge map take put partition partition-by])
   (:require-macros
    [mori.macros :refer [mori-export make-inspectable]])
-  (:require [cljs.core.async :as async]))
+  (:require [cljs.core.async :as async]
+            [goog.Promise]))
 
 (mori-export async.chan async/chan)
 (mori-export async.toChan async/to-chan)
 (mori-export async.ontoChan async/onto-chan)
 (mori-export async.take$ async/take!)
+
 (defn ^:export put [chan val]
   (goog/Promise. (fn [resolve, reject] (async/put! chan val (fn [res] (resolve res))))))
 
-(defn ^:export take [chan val]
+(defn ^:export take [chan]
   (goog/Promise. (fn [resolve, reject] (async/take! chan (fn [res] (resolve res))))))
 
 (defn ^:export alts [chans]
-  (goog/Promise. (fn [resolve, reject] (async/do-alts chans (fn [res] (resolve res))))))
+  (goog/Promise. (fn [resolve, reject] (async/do-alts (fn [res] (resolve res)) chans))))
 
 (mori-export async.put$ async/put!)
 (mori-export async.timeout async/timeout)
@@ -29,7 +31,6 @@
 (mori-export async.reduce async/reduce)
 (mori-export async.merge async/merge)
 (mori-export async.map async/map)
-(mori-export async.take async/take)
 (mori-export async.partition async/partition)
 (mori-export async.partitionBy async/partition-by)
 (mori-export async.doAlts async/do-alts)
