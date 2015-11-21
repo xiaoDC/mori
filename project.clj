@@ -31,11 +31,13 @@
        :pretty-print   false
        :verbose        true
        :modules
-       {:cljs-base {:entries #{cljs.core mori}
-                    :output-to "release/build/mori.base.js"}
+       {:cljs-base {:entries #{cljs.core}
+                    :output-to "release/build/cljs.core.js"}
+        :mori {:entries #{mori}
+                    :output-to "release/build/mori.js"}
         :mutable   {:entries #{mori.mutable}
                     :output-to "release/build/mori.mutable.js"}
         :extra     {:entries #{clojure.data cljs.reader clojure.set mori.extra}
                     :output-to "release/build/mori.extra.js"}
-        :core.async     {:entries #{cljs.core.async mori.async}
+        :core.async     {:entries #{mori.async}
                     :output-to "release/build/mori.async.js"}}}}]})
