@@ -1,14 +1,24 @@
 (ns mori.async
-  (:refer-clojure :exclude [reduce split pipe into merge map take put partition partition-by])
+  (:refer-clojure :exclude [reduce split pipe into merge map take put partition partition-by atom swap!])
   (:require-macros
-   [mori.macros :refer [mori-export make-inspectable]])
+   [mori.macros :refer [mori-export make-inspectable]]
+   [cljs.core.async.macros :refer [go go-loop]])
   (:require [cljs.core.async :as async]
             [goog.Promise]))
+
+(mori-export atom cljs.core/atom)
+(mori-export swap cljs.core/swap!)
 
 (mori-export async.chan async/chan)
 (mori-export async.toChan async/to-chan)
 (mori-export async.ontoChan async/onto-chan)
 (mori-export async.take$ async/take!)
+
+(defn ^:export observe [chan cb]
+  (go-loop []
+    (let [v (async/<! chan)]
+      (cb v)
+      (recur))))
 
 (defn ^:export put [chan val]
   (goog/Promise. (fn [resolve, reject] (async/put! chan val (fn [res] (resolve res))))))

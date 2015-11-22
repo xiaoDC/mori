@@ -156,11 +156,6 @@
 (mori-export identity cljs.core/identity)
 (mori-export constantly cljs.core/constantly)
 
-(mori-export toJs cljs.core/clj->js)
-(defn ^:export toClj
-  ([x] (cljs.core/js->clj x))
-  ([x keywordize-keys] (cljs.core/js->clj x :keywordize-keys keywordize-keys)))
-
 (defn ^:export configure [variable value]
   (case variable
     "print-length" (set! *print-length* value)

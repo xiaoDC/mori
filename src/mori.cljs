@@ -115,3 +115,7 @@
 (goog/exportSymbol "mori.Set.prototype.forEach" (.. cljs.core/PersistentHashSet -prototype -forEach))
 
 (mori-export compare cljs.core/compare)
+(mori-export toJs cljs.core/clj->js)
+(defn ^:export toClj
+  ([x] (cljs.core/js->clj x))
+  ([x keywordize-keys] (cljs.core/js->clj x :keywordize-keys keywordize-keys)))
