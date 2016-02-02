@@ -1,4 +1,4 @@
-var mori = require('../mori');
+var mori = require('../withAsync');
 var async = mori.async;
 
 describe('core.async', function() {
