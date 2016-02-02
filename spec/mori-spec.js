@@ -1,5 +1,5 @@
-var mori = require("../mori"),
-    extra = mori.extra,
+var mori = require("../withAsync"),
+    extra = mori,
     async = mori.async;
 describe("Map", function () {
     it("demonstrates mapping a function over a vector", function () {
@@ -104,7 +104,7 @@ describe("Mori Extra", function() {
 
     describe("Juxtaposition", function () {
         it("demonstrates function juxtaposition", function () {
-            var posAndNeg = mori.extra.juxt(mori.identity, function (v) { return -v; });
+            var posAndNeg = mori.juxt(mori.identity, function (v) { return -v; });
             var pnRes = posAndNeg(1);
             expect(mori.intoArray(pnRes)).toEqual([1,-1]);
             var knitRes = extra.knit(mori.inc, mori.dec)(posAndNeg(1));
