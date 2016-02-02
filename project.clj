@@ -44,10 +44,5 @@
 
         :mori {:entries #{mori}
                :output-to "release/build/mori.js"}
-        :coll   {:entries #{mori.coll}
-                 :output-to "release/build/mori.coll.js"}
-        :extra   {:entries #{mori.extra}
-                  :output-to "release/build/mori.extra.js"}
         }
-
        }}]})
