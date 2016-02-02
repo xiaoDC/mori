@@ -1,5 +1,7 @@
 # conjs, a fork of mori
 
+[![Build Status](https://travis-ci.org/jcouyang/conjs.svg?branch=master)](https://travis-ci.org/jcouyang/conjs)
+
 <img src="http://cloud.github.com/downloads/swannodette/mori/mori.png" alt="Mori" title="Mori"/>
 
 A simple bridge to ClojureScript's persistent data structures and
