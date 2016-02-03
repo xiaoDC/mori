@@ -1,5 +1,7 @@
 # conjs, a fork of mori
 
+[![Join the chat at https://gitter.im/jcouyang/conjs](https://badges.gitter.im/jcouyang/conjs.svg)](https://gitter.im/jcouyang/conjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/jcouyang/conjs.svg?branch=master)](https://travis-ci.org/jcouyang/conjs)
 
 <img src="http://cloud.github.com/downloads/swannodette/mori/mori.png" alt="Mori" title="Mori"/>
