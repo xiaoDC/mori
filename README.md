@@ -118,7 +118,7 @@ or `foo["@@iterator"]`.
 You can install the latest release via npm:
 
 ```shell
-npm install mori
+npm install con.js
 ```
 
 The installed package contains a single optimized JavaScript file `mori.js`.
@@ -126,7 +126,7 @@ The installed package contains a single optimized JavaScript file `mori.js`.
 Load `mori` in your Node.js programs as you would any other module:
 
 ```javascript
-var mori = require("mori");
+var mori = require("con.js");
 ```
 
 In a browser, you can load mori with a script tag, as you would any other JavaScript library:
