@@ -75,7 +75,7 @@ describe('core.async', function() {
       var now = new Date()
       async.doAlts(function(v) {
         var then = new Date()
-        expect((then-now)>100).toBe(true)
+        expect((then-now)>=100).toBe(true)
         done()
       },[c1,c2])
     })
