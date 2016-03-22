@@ -28,17 +28,28 @@ describe('core.async', function() {
     })
   })
 
-    describe('promise channel', function() {
-        it('take and put from channel',function(done) {
-            var c = async.chan()
-            async.take(c)
-                .then(function(x){
-                    expect(x).toBe('something in channel')
-                })
-                .then(done)
-            async.put(c, 'something in channel')
+  describe('promise channel', function() {
+    it('take and put from channel',function(done) {
+      var c = async.chan()
+      async.take(c)
+        .then(function(x){
+          expect(x).toBe('something in channel')
         })
+        .then(done)
+      async.put(c, 'something in channel')
     })
+
+    it('go generator', function(done){
+      var c = async.chan();
+      async.go(function*(){
+        var expected = yield "something in channel"
+        var val = yield c.take();
+        expect(val).toBe(expected);
+        done()
+      })
+      async.put(c, 'something in channel');
+    })
+  })
 
   describe('alts', function() {
     it('race channel', function(done) {
@@ -78,6 +89,6 @@ describe('core.async', function() {
         expect((then-now)>=100).toBe(true)
         done()
       },[c1,c2])
-    })
+    });
   })
 })

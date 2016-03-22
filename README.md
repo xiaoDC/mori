@@ -42,7 +42,23 @@ async.put(c1, 'c1').then(function(){console.log('put c1 into c1')})
 async.put(c2, 'c2').then(function(){console.log('put c2 into c2')})
 ```
 
-it return a promise, so if you're using babel with es7 `async function` feature, then you'll get a very nice CSP style of taking, puting and atlsing a Channel.
+#### goroutine with generator
+
+just `yield` before take or put promise, you'll get a very nice CSP style goroutine
+
+```js
+var c = async.chan();
+async.go(function*(){
+  var expected = yield "something in channel"
+  var val = yield c.take();
+  expect(val).toBe(expected);
+  done()
+})
+async.put(c, 'something in channel');
+```
+
+#### async/await
+so if you're using babel with es7 `async function` feature, then you'll also get a very nice CSP style of taking, puting and atlsing a Channel.
 
 ```js
 var a = mori.async;
@@ -61,6 +77,7 @@ var a = mori.async;
   console.log('put c2 into c2')
 })()  
 ```
+
 ### Idiomatic JS method names
 
 instead of
