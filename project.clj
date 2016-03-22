@@ -43,18 +43,6 @@
                     :output-to "release/build/mori.async.js"}
 
         :mori {:entries #{mori}
-<<<<<<< Updated upstream
                :output-to "release/build/mori.js"}
         }
        }}]})
-=======
-                    :output-to "release/build/mori.js"}
-        :mutable   {:entries #{mori.mutable}
-                    :output-to "release/build/mori.mutable.js"}
-        :extra     {:entries #{clojure.data cljs.reader clojure.set mori.extra}
-                    :output-to "release/build/mori.extra.js"}
-        :core.logic     {:entries #{mori.logic}
-                         :output-to "release/build/mori.logic.js"}
-        :core.async     {:entries #{mori mori.async}
-                    :output-to "release/build/mori.async.js"}}}}]})
->>>>>>> Stashed changes
