@@ -49,6 +49,22 @@ describe('core.async', function() {
       })
       async.put(c, 'something in channel');
     })
+
+    it('try catch goroutine', function(done){
+      var c = async.chan();
+      var p = new Promise(function(_,reject){
+        reject("something wrong")
+      })
+      async.go(function*(){
+        try {
+          var expected = yield p;
+        } catch (e) {
+          expect(e).toBe("something wrong");
+          done();
+        }
+      })
+      
+    })
   })
 
   describe('alts', function() {

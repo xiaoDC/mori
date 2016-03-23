@@ -22,10 +22,13 @@
 
 (defn ^:export go
   ([f] (let [gen (f) next (.next gen)] (go gen next)))
-  ([gen next] (cond
-                (.-done next) (.-value next)
-                (aget (.-value next) "then") (.then (.-value next) (fn [val] (go gen (.next gen val))))
-                :else (go gen (.next gen (.-value next))))))
+  ([gen next] (let [val (.-value next)]
+                (cond
+                  (.-done next) val
+                  (aget val "then") (.then val
+                                           (fn [v] (go gen (.next gen v)))
+                                           (fn [e] (.throw gen e)))
+                  :else (go gen (.next gen val))))))
 
 (defn ^:export put [chan val]
   (goog/Promise. (fn [resolve, reject] (async/put! chan val (fn [res] (resolve res))))))
