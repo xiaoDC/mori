@@ -27,7 +27,8 @@
     sum inc dec even? odd? subseq
     meta with-meta vary-meta
     apply hash select-keys into-array list range
-    memoize rand trampoline]))
+    memoize rand trampoline
+    str]))
 
 ; Basics
 
@@ -282,6 +283,8 @@
 (mori-export memoize cljs.core/memoize)
 (mori-export rand cljs.core/rand)
 (mori-export trampoline cljs.core/trampoline)
+
+(mori-export str cljs.core/str)
 
 ;; =============================================================================
 ;; Node.js Inspection support
