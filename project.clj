@@ -8,7 +8,7 @@
   :plugins [[lein-cljsbuild "1.1.2"]]
 
   :clean-targets ["dev" "release" "target"]
-  
+
   :cljsbuild
   {:builds
    [;; mori
