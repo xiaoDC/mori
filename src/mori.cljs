@@ -298,6 +298,9 @@
 
 (mori-export str cljs.core/str)
 
+(defn ^:export strNs [sym] (.-ns sym))
+(defn ^:export strName [sym] (.-name sym))
+
 ;; =============================================================================
 ;; Node.js Inspection support
 
