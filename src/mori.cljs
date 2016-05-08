@@ -72,6 +72,7 @@
 ; Extras
 
 (mori-export range cljs.core/range)
+(mori-export List cljs.core/List)
 (mori-export list cljs.core/list)
 (mori-export intoArray cljs.core/into-array)
 (mori-export selectKeys cljs.core/select-keys)
@@ -155,7 +156,9 @@
 
 (def ^:export queue (fn [& args] (into cljs.core.PersistentQueue.EMPTY args)))
 
+(mori-export Keyword cljs.core/Keyword)
 (mori-export keyword cljs.core/keyword)
+(mori-export Symbol cljs.core/Symbol)
 (mori-export symbol cljs.core/symbol)
 
 (mori-export zipmap cljs.core/zipmap)
