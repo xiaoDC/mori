@@ -151,8 +151,6 @@
 (mori-export sortedMap cljs.core/sorted-map)
 (mori-export SortedMap cljs.core/PersistentTreeMap)
 (mori-export sortedMapBy cljs.core/sorted-map-by)
-(mori-export objMap cljs.core/obj-map)
-(mori-export ObjMap cljs.core/ObjMap)
 
 (def ^:export queue (fn [& args] (into cljs.core.PersistentQueue.EMPTY args)))
 
