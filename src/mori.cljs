@@ -300,6 +300,7 @@
 
 (defn ^:export strNs [sym] (.-ns sym))
 (defn ^:export strName [sym] (.-name sym))
+(defn ^:export strHead [sym] (or (.-ns sym) (.-name sym)))
 
 ;; =============================================================================
 ;; Node.js Inspection support
