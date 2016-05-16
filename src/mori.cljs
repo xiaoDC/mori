@@ -4,7 +4,8 @@
   (:require [clojure.set :as set]
             [cljs.reader :as reader]
             [clojure.data :as data]
-            [clojure.zip :as zip])
+            [clojure.zip :as zip]
+            [clojure.string :as string])
   (:refer-clojure :exclude
    [count empty conj find nth assoc dissoc disj pop peek get
     empty? reverse into merge subvec keys vals
@@ -300,6 +301,7 @@
 (mori-export trampoline cljs.core/trampoline)
 
 (mori-export str cljs.core/str)
+(mori-export strJoin string/join)
 
 (defn ^:export strNs [sym] (.-ns sym))
 (defn ^:export strName [sym] (.-name sym))
