@@ -32,6 +32,7 @@
     }
   ],
   "main": "./mori.js",
+  "typings": "./mori.d.ts",
   "repository": {
     "type": "git",
     "url": "git://github.com/bjoyx/mori.git"
