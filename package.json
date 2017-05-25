@@ -1,5 +1,5 @@
 {
-  "name": "con.js",
+  "name": "mori",
   "version": "0.6.1",
   "description": "Fork of Mori, a Persistent Data Structures for JavaScript",
   "homepage": "https://github.com/jcouyang/conjs",
@@ -19,10 +19,11 @@
   ],
   "contributors": [
     "David Nolen (https://github.com/swannodette)",
-    "Jichao Ouyang"
+    "Jichao Ouyang",
+    "Ben Lambert (https://github.com/bjoyx)"
   ],
   "bugs": {
-    "url": "https://github.com/swannodette/mori/issues"
+    "url": "https://github.com/bjoyx/mori/issues"
   },
   "licenses": [
     {
@@ -33,7 +34,7 @@
   "main": "./mori.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jcouyang/conjs.git"
+    "url": "git://github.com/bjoyx/mori.git"
   },
   "engines": {
     "node": ">=0.8.22"
