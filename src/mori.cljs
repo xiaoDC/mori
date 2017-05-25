@@ -75,7 +75,7 @@
 (mori-export range cljs.core/range)
 (mori-export List cljs.core/List)
 (mori-export list cljs.core/list)
-(mori-export intoArray cljs.core/into-array)
+(mori-export toArray cljs.core/into-array)
 (mori-export selectKeys cljs.core/select-keys)
 (mori-export hash cljs.core/hash)
 (mori-export apply cljs.core/apply)
@@ -237,8 +237,8 @@
 (mori-export identity cljs.core/identity)
 (mori-export constantly cljs.core/constantly)
 
-(mori-export toJs cljs.core/clj->js)
-(defn ^:export toClj
+(mori-export toJS cljs.core/clj->js)
+(defn ^:export toMori
   ([x] (cljs.core/js->clj x))
   ([x keywordize-keys] (cljs.core/js->clj x :keywordize-keys keywordize-keys)))
 
