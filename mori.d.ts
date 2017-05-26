@@ -494,7 +494,7 @@ declare module 'mori' {
 	 * Return a lazy sequence that represents the original collection with f applied to each element. 
 	 * Note that map can take multiple collections This obviates the need for Underscore.js's zip.
 	 */
-	function map<T, C extends Collection<T>, U>(callback: (value: T) => U, ...rest: C[]): Seq<U>;
+	function map<T, U>(callback: (value: T) => U, ...rest: Vector<T>[]): Seq<U>;
 	
 	
 	/**
