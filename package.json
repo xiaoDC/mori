@@ -25,25 +25,20 @@
   "bugs": {
     "url": "https://github.com/bjoyx/mori/issues"
   },
-  "licenses": [
-    {
-      "type": "EPL",
-      "url": "https://raw.github.com/swannodette/mori/master/epl-v10.html"
-    }
-  ],
+  "license": "EPL-1.0",
   "main": "./mori.js",
   "typings": "./mori.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/bjoyx/mori.git"
-  },
+  "repository": "git://github.com/bjoyx/mori.git",
   "engines": {
     "node": ">=0.8.22"
   },
   "dependencies": {},
   "devDependencies": {
     "immutable": "3.5.0",
-    "jasmine-node": "1.7.0"
+    "jasmine-node": "1.7.0",
+    "tslint": "^5.3.2",
+    "tslint-eslint-rules": "^4.1.0",
+    "typescript": "^2.3.3"
   },
   "scripts": {
     "build": "./scripts/build.sh",
