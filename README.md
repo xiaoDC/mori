@@ -163,7 +163,7 @@ var inc = function(n) {
   return n+1;
 };
 
-mori.intoArray(mori.map(inc, mori.vector(1,2,3,4,5)));
+mori.toArray(mori.map(inc, mori.vector(1,2,3,4,5)));
 // => [2,3,4,5,6]
 ```
 
@@ -187,7 +187,7 @@ Lazy sequences!
 
 ```javascript
 var _ = mori;
-_.intoArray(_.interpose("foo", _.vector(1, 2, 3, 4)));
+_.toArray(_.interpose("foo", _.vector(1, 2, 3, 4)));
 // => [1, "foo", 2, "foo", 3, "foo", 4]
 ```
 
@@ -196,7 +196,7 @@ Or if it's more your speed, use it from CoffeeScript!
 ```coffeescript
 inc = (x) -> x+1  
 r = mori.map inc, mori.vector(1,2,3,4,5)
-mori.intoArray r
+mori.toArray r
 ```
 
 ### Documentation
